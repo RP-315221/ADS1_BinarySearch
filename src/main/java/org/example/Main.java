@@ -1,36 +1,98 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        BinaryTreeNode node1=new BinaryTreeNode(15);
-        BinaryTreeNode node2=new BinaryTreeNode(10);
-        BinaryTreeNode node3=new BinaryTreeNode(25);
-        BinaryTreeNode node4=new BinaryTreeNode(12);
-        BinaryTreeNode node5=new BinaryTreeNode(20);
-        BinaryTreeNode node6=new BinaryTreeNode(27);
-        BinaryTreeNode node7=new BinaryTreeNode(11);
-        BinaryTreeNode node9=new BinaryTreeNode(19);
-        BinaryTreeNode node10=new BinaryTreeNode(22);
-
-        node1.addLeftChild(node2);
-        node1.addRightChild(node3);
-        node2.addRightChild(node4);
-        node3.addLeftChild(node5);
-        node3.addRightChild(node6);
-        node4.addLeftChild(node7);
-        node5.addLeftChild(node9);
-        node5.addRightChild(node10);
-
-        BinarySearchTree tree=new BinarySearchTree(node1);
-        System.out.println("In-order traversal: "+tree.inOrder());
-        System.out.println("Pre-order traversal: "+tree.preOrder());
-        System.out.println("Post-order traversal: "+tree.postOrder());
-        System.out.println("Level-order traversal: "+tree.levelOrder());
-        System.out.println("Contains 11? - "+tree.contains(11));
-        System.out.println("Size: "+tree.size());
-        System.out.println("Height: "+tree.height(tree.getRoot()));
-
-        BinaryTreePrint print=new BinaryTreePrint();
-        print.printTree(node1);
+        Scanner keyboard=new Scanner(System.in);
+        BinaryTreePrint print = new BinaryTreePrint();
+        while(true)
+        {
+            System.out.println("Choose an option:");
+            System.out.println("1. Create a binary tree");
+            System.out.println("2. Exit");
+            int choice=keyboard.nextInt();
+            switch(choice)
+            {
+                case 1:
+                    System.out.println("Enter the root node");
+                    int root=keyboard.nextInt();
+                    BinaryTreeNode<Integer> rootNode=new BinaryTreeNode<>(root);
+                    BinarySearchTree<Integer> tree=new BinarySearchTree<>(rootNode);
+                    while(true)
+                    {
+                        System.out.println("");
+                        print.printTree(rootNode);
+                        System.out.println("");
+                        System.out.println("Choose an option:");
+                        System.out.println("1. Add a node");
+                        System.out.println("2. Remove a node");
+                        System.out.println("3. Search for a node");
+                        System.out.println("4. Height of the tree");
+                        System.out.println("5. Size of the tree");
+                        System.out.println("6. Traversal");
+                        System.out.println("7. Rebalance");
+                        System.out.println("8. Exit");
+                        int choice2=keyboard.nextInt();
+                        switch (choice2)
+                        {
+                            case 1:
+                                System.out.println("Enter the value of the node");
+                                int value=keyboard.nextInt();
+                                Boolean status=tree.insert(value);
+                                break;
+                            case 2:
+                                System.out.println("Enter the value of the node");
+                                int value2=keyboard.nextInt();
+                                tree.remove(value2);
+                                break;
+                            case 3:
+                                System.out.println("Enter the value of the node");
+                                int value3=keyboard.nextInt();
+                                if(tree.contains(value3))
+                                    System.out.println("Node found");
+                                else
+                                    System.out.println("Node not found");
+                                break;
+                            case 4:
+                                System.out.println("Height of the tree is "+tree.height(rootNode));
+                                break;
+                            case 5:
+                                System.out.println("Size of the tree is "+tree.size());
+                                break;
+                            case 6:
+                                System.out.println("Choose an option:");
+                                System.out.println("1. Preorder");
+                                System.out.println("2. Inorder");
+                                System.out.println("3. Postorder");
+                                System.out.println("4. Levelorder");
+                                int choice3=keyboard.nextInt();
+                                switch(choice3)
+                                {
+                                    case 1:
+                                        System.out.println(tree.preOrder());
+                                        break;
+                                    case 2:
+                                        System.out.println(tree.inOrder());
+                                        break;
+                                    case 3:
+                                        System.out.println(tree.postOrder());
+                                        break;
+                                    case 4:
+                                        System.out.println(tree.levelOrder());
+                                        break;
+                                }
+                                break;
+                            case 7:
+                                tree.rebalance();
+                                break;
+                            case 8:
+                                System.exit(0);
+                        }
+                    }
+                case 2:
+                    System.exit(0);
+            }
+        }
     }
 }
