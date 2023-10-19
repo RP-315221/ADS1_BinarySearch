@@ -20,7 +20,7 @@ compile the code and run src/main/java/org/example/Main.java application.
 
 ## Usage
 
-![BST_Tool](ADS1_BinarySearch/images/BinarySearchTree.png)
+![BST_Tool](images/BinarySearchTree.png)
 
 Upon launching the application, the system will ask a user if they wish to create a new binary tree. If the user responds with a yes, the system will ask for a root node. Once the user has inserted the root node, the user will be presented with 7 different features: 
 * Insertion: The system will add an element specified by the user to the tree
