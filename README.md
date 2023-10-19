@@ -30,6 +30,7 @@ Upon launching the application, the system will ask a user if they wish to creat
 * Size: The system will calculate the size of the current tree
 * Traversal: The system will return a sequence of elements in a requested order - Preorder, Inorder, Postorder, Levelorder
 * Rebalance: The system will replace and the current tree with a balanced version of it
+
 After each usage of a feature the system will print out a visual presentation of the tree so the user could keep track of the changes within it. Moreover it will ask the user if he wishes to use any other features.
 
 ## License
